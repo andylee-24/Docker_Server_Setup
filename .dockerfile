@@ -2,12 +2,15 @@
 
 FROM pytorch/pytorch
 
+# RUN executes the instructions in a new layer on top of the existing image 
+# and commit those layers and the resulted layer will be used for 
+# the next instructions in the Dockerfile.
+
 RUN apt-get update && \
     apt-get install -y build-essential zsh openssh-server && \
     apt-get clean
 
-
-# CMD command is used to give the default commands when the image is instantiated, 
-# it doesn’t execute while build stage. There should be only one CMD per Dockerfile, 
+# CMD command is used to give the default commands when the image is instantiated (only once).
+# It doesn’t execute while build stage. There should be only one CMD per Dockerfile, 
 # you can list multiple but the last one will be executed.
-CMD ["redis-server", "--protected-mode no"]
+CMD ["/bin/bash", "-c", "echo \"PermitRootLogin yes\" >> /etc/ssh/sshd_config;service ssh start"]
