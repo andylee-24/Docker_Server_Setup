@@ -1,7 +1,7 @@
 # Comments are from https://medium.com/bb-tutorials-and-thoughts/docker-a-beginners-guide-to-dockerfile-with-a-sample-project-6c1ac1f17490
 
 # Pull base image.
-FROM pytorch/pytorch
+FROM pytorch/pytorch:2.0.0-cuda11.7-cudnn8-runtime
 
 # RUN executes the instructions in a new layer on top of the existing image 
 # and commit those layers and the resulted layer will be used for 
@@ -13,7 +13,7 @@ RUN \
     apt install -y build-essential && \
     apt install -y vim zsh unzip htop wget xrdp tmux git && \
     apt install -y openssh-server && \
-    echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && \
+    echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 
 # Set environment variables.
 ENV HOME /root
