@@ -12,7 +12,7 @@ RUN \
     apt -y upgrade && \
     apt install -y build-essential && \
     apt install -y vim zsh unzip htop wget && \
-    apt install -y openssh-server &&
+    apt install -y openssh-server && \
     echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && \
     service ssh start
 
