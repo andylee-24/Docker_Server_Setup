@@ -1,5 +1,5 @@
 docker run \
-  -d \
+  -itd \
   --storage-opt size=100G \
   --cpus=".8" \
   --gpus all \
