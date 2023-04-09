@@ -11,7 +11,7 @@ RUN \
     apt update && \
     apt -y upgrade && \
     apt install -y build-essential && \
-    apt install -y vim zsh unzip htop wget xrdp && \
+    apt install -y vim zsh unzip htop wget xrdp tmux git && \
     apt install -y openssh-server && \
     echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && \
 
