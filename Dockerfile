@@ -6,6 +6,7 @@ FROM pytorch/pytorch:2.0.0-cuda11.7-cudnn8-runtime
 # RUN executes the instructions in a new layer on top of the existing image 
 # and commit those layers and the resulted layer will be used for 
 # the next instructions in the Dockerfile.
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN \
     apt update && \
