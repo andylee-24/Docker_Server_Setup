@@ -6,6 +6,8 @@ FROM pytorch/pytorch:2.0.0-cuda11.7-cudnn8-runtime
 # RUN executes the instructions in a new layer on top of the existing image 
 # and commit those layers and the resulted layer will be used for 
 # the next instructions in the Dockerfile.
+
+# disable the keyboard-setting in the ubuntu while docker RUN
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN \
@@ -14,7 +16,6 @@ RUN \
     apt install -y build-essential && \
     apt install -y vim zsh unzip htop wget xrdp tmux git && \
     apt install -y openssh-server && \
-    echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && \
     env > /etc/environment
 
 
