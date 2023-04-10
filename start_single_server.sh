@@ -8,6 +8,7 @@ fi
 sudo docker run \
   -itd \
   --cpus=".8" \
+  --ipc host \
   --gpus all \
   --memory=48g \
   -v /mnt/data:/mnt/data \

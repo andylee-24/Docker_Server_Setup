@@ -13,7 +13,9 @@ RUN \
     apt install -y build-essential && \
     apt install -y vim zsh unzip htop wget xrdp tmux git && \
     apt install -y openssh-server && \
-    echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+    echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && \
+    env > /etc/environment
+
 
 # Set environment variables.
 ENV HOME /root
