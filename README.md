@@ -7,3 +7,8 @@
 5. Run and attach the container
 6. Enable the ssh service ```service ssh start```
 7. ```ssh [username]@[ip] -p [port number]```
+
+### Special Thanks to...
+[Jaehyun-Ko](https://github.com/jaehyun-ko)  
+[mirageoasis](https://github.com/mirageoasis)  
+[Dongjun Hwang](https://github.com/dongjunhwang)  
