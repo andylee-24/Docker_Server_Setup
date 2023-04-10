@@ -15,4 +15,4 @@ sudo docker run \
   -v /mnt/shared:/mnt/shared \
   --name $1 \
   -p $2:22 \
-  eclgpu4_pytorch:1.0
+  gpu_pytorch:1.0
