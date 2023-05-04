@@ -16,7 +16,8 @@ RUN \
     apt install -y build-essential && \
     apt install -y vim zsh unzip htop wget xrdp tmux git && \
     apt install -y openssh-server && \
-    env > /etc/environment
+	chsh -s /bin/zsh && \
+    env > /etc/environment && \
 
 
 # Set environment variables.
