@@ -7,7 +7,7 @@ fi
 
 sudo docker run \
   -itd \
-  --cpus=".8" \
+  --cpus="32" \
   --ipc host \
   --gpus all \
   --memory=48g \
