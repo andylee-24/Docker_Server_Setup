@@ -15,9 +15,9 @@ RUN \
     apt -y upgrade && \
     apt install -y build-essential && \
     apt install -y vim zsh unzip htop wget xrdp tmux git && \
+	apt install -y fail2ban && \
     apt install -y openssh-server && \
-	chsh -s /bin/zsh && \
-    env > /etc/environment && \
+    env > /etc/environment
 
 
 # Set environment variables.
