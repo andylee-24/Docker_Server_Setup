@@ -5,16 +5,17 @@ if [ "$#" -ne 2 ]; then
 	exit 1
 fi
 
-sudo docker run \
+docker run \
   -itd \
-  --storage-opt size=192g \
+  --storage-opt size=128g \
   --cpus="32" \
   --ipc host \
-  --gpus all \
-  --memory=48g \
-  -v /mnt/sdb:/mnt/sdb \
+  --gpus '"device=1"' \
+  --memory=128g \
+  -v /mnt:/mnt \
   --name $1 \
   -p $2:22 \
-  gpu_server:1.0
+  eclgpu1:1.0
 
 # -v [host_path]:[mounting_point_in_the_container]
+# --gpus all / '"device=1"'
