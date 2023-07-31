@@ -8,6 +8,7 @@
 5. Run and attach the container
 6. Enable the ssh service ```service ssh start```
 7. ```ssh [username]@[ip] -p [port number]```
+8. Press ```Ctrl+P``` ```Ctrl+Q``` to detatch the container
 
 ### TODO
 * Limit the disk R/W rate per container
