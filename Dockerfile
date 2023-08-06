@@ -23,7 +23,8 @@ RUN \
 	    apt install -y openssh-server && \
 	    echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && \
      	    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/conda/lib && \
-     	    cp /usr/lib/x86_64-linux-gnu/libtinfo.so.6 /opt/conda/lib && \
+     	    cp /lib/x86_64-linux-gnu/libtinfo.so.6 /opt/conda/lib && \
+     	    cp /lib/x86_64-linux-gnu/libncursesw.so.6 /opt/conda/lib && \
 	    env > /etc/environment
 
 
