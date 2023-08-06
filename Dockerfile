@@ -18,7 +18,7 @@ RUN \
 	    apt install -y m4 scons doxygen cmake && \
 	    apt install -y zlib1g zlib1g-dev && \
 	    apt install -y protobuf-compiler libprotobuf-dev libprotoc-dev && \
-	    apt install -y libboost-all-dev libpng-dev libelf-dev && \
+	    apt install -y libboost-all-dev libpng-dev libelf-dev libgoogle-perftools-dev && \
 	    apt install -y fail2ban && \
 	    apt install -y openssh-server && \
 	    echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && \
