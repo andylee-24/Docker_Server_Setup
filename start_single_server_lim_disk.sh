@@ -7,6 +7,7 @@ fi
 
 docker run \
   -itd \
+  --restart unless-stopped \
   --storage-opt size=128g \
   --cpus="32" \
   --ipc host \
