@@ -23,7 +23,6 @@ RUN \
 	    apt install -y openssh-server && \
 	    echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && \
      	    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/conda/lib && \
-	  
 	    env > /etc/environment
 
 
@@ -36,11 +35,11 @@ WORKDIR /root
 # https://devtron.ai/blog/cmd-and-entrypoint-differences/
 # ENTRYPOINT sets default parameters that cannot be overriden while starting up docker containers with CLI params
 # (appended as a CLI params)
-ENTRYPOINT service ssh start
+ENTRYPOINT service ssh start && zsh
 
 
 # CMD command is used to give the default commands when the image is instantiated (only once).
 # It doesn’t execute while build stage. There should be only one CMD per Dockerfile, 
 # you can list multiple but the last one will be executed.
 # CMD sets the default parameters that can be overriden from the docker CLI when running a docker container
-CMD ["zsh"]
+# CMD ["zsh"]
