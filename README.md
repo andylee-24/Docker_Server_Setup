@@ -4,7 +4,7 @@
 2. Install nvidia drivers and nvidia-container-toolkit
 3. Reboot for initializing GPU drivers
 4. Pull or build the docker image from the Dockerfile
-	* docker build -t gpu\_server:1.0 .
+	* docker build -t [TagName] -f [MyDockerFile] .
 5. Run and attach the container
 6. Enable the ssh service ```service ssh start```
 7. ```ssh [username]@[ip] -p [port number]```
