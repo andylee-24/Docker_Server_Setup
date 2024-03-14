@@ -15,7 +15,7 @@ RUN \
 	    apt -y upgrade && \
 	    apt install -y build-essential locales && \
 	    apt install -y vim zsh unzip htop wget xrdp tmux git curl xrdp && \
-	    apt install -y m4 scons doxygen cmake && \
+	    apt install -y m4 scons doxygen cmake sudo && \
 	    apt install -y zlib1g zlib1g-dev && \
 	    apt install -y protobuf-compiler libprotobuf-dev libprotoc-dev && \
 	    apt install -y libboost-all-dev libpng-dev libelf-dev libgoogle-perftools-dev && \
@@ -25,7 +25,9 @@ RUN \
      	    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/conda/lib && \
      	    cp /lib/x86_64-linux-gnu/libtinfo.so.6 /opt/conda/lib && \
      	    cp /lib/x86_64-linux-gnu/libncursesw.so.6 /opt/conda/lib && \
-	    env > /etc/environment
+	    env > /etc/environment && \
+	    rm /usr/bin/python3 && \
+	    ln -s /opt/conda/bin/python /usr/bin/python3
 
 
 # Set environment variables.
