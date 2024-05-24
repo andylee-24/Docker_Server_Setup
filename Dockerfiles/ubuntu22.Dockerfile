@@ -28,7 +28,7 @@ FROM ubuntu:jammy
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt -y update && apt -y upgrade && \
-    unzip tmux openssh-server vim zsh
+    apt install -y unzip tmux openssh-server vim zsh
 
 RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 
