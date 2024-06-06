@@ -18,9 +18,9 @@ echo -n "Port : "
 read port_number
 
 # Prompt user for CPU quota
-max_cpus=$(nproc)
-echo -n "CPUs quota	(up to $max_cpus) : "
-read cpus_quota
+# max_cpus=$(nproc)
+# echo -n "CPUs quota	(up to $max_cpus) : "
+# read cpus_quota
 
 # Prompt user for memory quota
 echo -n "Memory quota (GB) : "
@@ -34,14 +34,16 @@ read storage_quota
 
 docker run \
   -itd \
-  --restart unless-stopped \
+  --restart always \
   --storage-opt size="${storage_quota}g" \
-  --cpus=$cpus_quota \
   --memory="${memory_quota}g" \
   --gpus all \
   --name $container_name \
   -p $port_number:22 \
   -v /mnt/nvme_dataset:/mnt/dataset \
+  --device /dev/kvm \
+  --privileged \
+  --shm-size="${memory_quota}g" \
   $image_name
 
 echo "Successfully created"
@@ -54,3 +56,5 @@ echo "Successfully created"
 # --device /dev/kvm \
 # --security-opt seccomp=unconfined \
 # --cap-add SYS_ADMIN \
+# --cpus=$cpus_quota \
+# --shm-size for pytorch DDP
