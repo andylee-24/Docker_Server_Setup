@@ -2,8 +2,8 @@
 
 ### Setting up docker environment
 1. Install [Docker](https://docs.docker.com/engine/install/)
-2. Install nvidia drivers and nvidia-container-toolkit
-3. Reboot to initialize GPU drivers
+2. Install nvidia drivers and [nvidia-container-toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
+3. Reboot the server to initialize GPU drivers
 4. Pull or build the docker image from the Dockerfile:  
    `docker build -t [TagName] -f [MyDockerFile] .`  
    Or you can run the script `start_single_server_lim_disk.sh`
@@ -14,12 +14,11 @@
 `ssh [username]@[ip] -p [port_number]`
 * Or you can attach the container using:  
 `docker attach [container_name]`  
-Press ```Ctrl+P``` ```Ctrl+Q``` to detatch the container.  
-If you use ```Ctrl+D```, the container will terminate
+Press ```Ctrl+P``` ```Ctrl+Q``` to detatch the container. ```Ctrl+D```, will shutdown the container.
 
 ### TODO
 * Limit the disk R/W rate per container
-
+* Show available disk / ram during making a container
 ### Special Thanks to...
 [Jaehyun-Ko](https://github.com/jaehyun-ko)  
 [mirageoasis](https://github.com/mirageoasis)  
