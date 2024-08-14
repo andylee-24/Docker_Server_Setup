@@ -1,13 +1,30 @@
 #!/bin/bash
 
+# Function to check if fzf is installed
+check_fzf_installed() {
+    if ! command -v fzf &> /dev/null
+    then
+        echo "fzf could not be found."
+        echo "Please install fzf before running this script."
+        echo "For Ubuntu/Debian: sudo apt-get install fzf"
+        echo "For macOS: brew install fzf"
+        exit 1
+    fi
+}
 
+# Check if fzf is installed
+check_fzf_installed
 # Display available Docker images
-echo "Available Docker images are below,"
-docker images
+images=$(docker images --format '{{.Repository}}:{{.Tag}}')
+image_name=$(echo "$images" | fzf --prompt="Select Docker image: " --height=10 --reverse)
 
-# Prompt user to select an image
-echo -n "Enter the name:tag of the Docker image: "
-read image_name
+# Check if selection is made
+if [ -n "$image_name" ]; then
+    echo "You selected: $image_name"
+else
+    echo "No image selected."
+	exit
+fi
 
 # Prompt user for container name
 echo -n "Container Name : "
@@ -40,13 +57,11 @@ docker run \
   --gpus all \
   --name $container_name \
   -p $port_number:22 \
-  -v /mnt/nvme_dataset:/mnt/dataset \
+  -v /mnt:/mnt \
   --device /dev/kvm \
   --privileged \
   --shm-size="${memory_quota}g" \
   $image_name
-
-echo "Successfully created"
 
 # other options #
 
