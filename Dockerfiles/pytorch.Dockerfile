@@ -29,9 +29,11 @@ RUN \
 	    rm /usr/bin/python3 && \
 	    ln -s /opt/conda/bin/python /usr/bin/python3
 
+# create a dir for ssh daemon
+RUN mkdir -p /var/run/sshd
 
 # Set environment variables.
-ENV HOME /root
+ENV HOME=/root
 
 # Define working directory.
 WORKDIR /root
@@ -39,7 +41,7 @@ WORKDIR /root
 # https://devtron.ai/blog/cmd-and-entrypoint-differences/
 # ENTRYPOINT sets default parameters that cannot be overriden while starting up docker containers with CLI params
 # (appended as a CLI params)
-ENTRYPOINT service ssh start && zsh
+ENTRYPOINT ["sh", "-c", "service ssh start && exec zsh"]
 
 
 # CMD command is used to give the default commands when the image is instantiated (only once).
