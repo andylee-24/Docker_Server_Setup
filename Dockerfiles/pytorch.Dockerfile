@@ -1,7 +1,7 @@
 # Comments are from https://medium.com/bb-tutorials-and-thoughts/docker-a-beginners-guide-to-dockerfile-with-a-sample-project-6c1ac1f17490
 
 # Pull base image.
-FROM pytorch/pytorch:2.3.1-cuda12.1-cudnn8-runtime
+FROM pytorch/pytorch:2.4.1-cuda12.1-cudnn9-runtime
 
 # RUN executes the instructions in a new layer on top of the existing image 
 # and commit those layers and the resulted layer will be used for 

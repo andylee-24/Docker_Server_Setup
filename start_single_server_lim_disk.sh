@@ -54,11 +54,11 @@ docker run \
   --restart always \
   --storage-opt size="${storage_quota}g" \
   --memory="${memory_quota}g" \
-  --gpus all \
   --name $container_name \
   -p $port_number:22 \
   -v /mnt:/mnt \
   --device /dev/kvm \
+  --gpus all \
   --privileged \
   --shm-size="${memory_quota}g" \
   $image_name
