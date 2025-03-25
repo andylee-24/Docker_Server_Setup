@@ -1,4 +1,16 @@
 #!/bin/bash
+set -euo pipefail
+
+if ! command -v docker &> /dev/null; then
+    echo "Docker is not installed. Please install Docker."
+    exit 1
+fi
+
+if ! docker info &> /dev/null; then
+    echo "Docker does not seem to be running. Please start the Docker daemon."
+    exit 1
+fi
+
 
 # Function to check if fzf is installed
 check_fzf_installed() {
@@ -33,6 +45,13 @@ read container_name
 # Prompt user for port number
 echo -n "Port : "
 read port_number
+
+# Basic validation example (check if port is a number)
+if ! [[ "$port_number" =~ ^[0-9]+$ ]]; then
+    echo "Invalid port number. Please enter a numeric value."
+    exit 1
+fi
+
 
 # Prompt user for CPU quota
 # max_cpus=$(nproc)
