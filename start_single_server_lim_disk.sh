@@ -58,10 +58,21 @@ fi
 # echo -n "CPUs quota	(up to $max_cpus) : "
 # read cpus_quota
 
-# Prompt user for memory quota
-echo -n "Memory quota (GB) : "
+echo "Available host memory : ${mem_available_gb} GB"
+echo "Suggested memory limit (90%) : ${suggested_mem_gb} GB"
+echo -n "Memory quota (GB) [suggested: ${suggested_mem_gb}] : "
 read memory_quota
 
+# If user just presses Enter, use suggested value
+if [[ -z "${memory_quota}" ]]; then
+    memory_quota="${suggested_mem_gb}"
+fi
+
+# Basic validation
+if ! [[ "$memory_quota" =~ ^[0-9]+$ ]]; then
+    echo "Invalid memory quota. Please enter a numeric value (GB)."
+    exit 1
+fi
 
 # Prompt user for storage qutoa
 echo -n "Storage quota (GB) : "
