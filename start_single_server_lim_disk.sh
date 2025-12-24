@@ -58,6 +58,18 @@ fi
 # echo -n "CPUs quota	(up to $max_cpus) : "
 # read cpus_quota
 
+# Query available DRAM (Linux)
+if [[ -r /proc/meminfo ]]; then
+    mem_available_kb=$(awk '/MemAvailable:/ {print $2}' /proc/meminfo)
+    mem_available_gb=$(( mem_available_kb / 1024 / 1024 ))
+    suggested_mem_gb=$(( mem_available_gb * 90 / 100 ))
+else
+    echo "Cannot determine available memory (missing /proc/meminfo)."
+    mem_available_gb="unknown"
+    suggested_mem_gb="unknown"
+fi
+
+
 echo "Available host memory : ${mem_available_gb} GB"
 echo "Suggested memory limit (90%) : ${suggested_mem_gb} GB"
 echo -n "Memory quota (GB) [suggested: ${suggested_mem_gb}] : "
