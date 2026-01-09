@@ -8,6 +8,7 @@
    `docker build -t [TagName] -f [MyDockerFile] .`  
    Or you can run the script `start_single_server_lim_disk.sh`
 * Ensure the disk is formatted as 'xfs' to enforce quota limits. For more details, refer to the [Docker documentation](https://docs.docker.com/reference/cli/dockerd/#overlay2-options).
+* *Important update!* In Docker Engine 29.0+, Docker’s default image backend does not use overlay2 anymore which is required for quota limits with xfs. [Apply overlay2 setting to xfs disk](https://docs.docker.com/engine/storage/drivers/overlayfs-driver/).
 
 ### How to access and attach the container
 * To access the container using ssh:  
