@@ -1,14 +1,18 @@
 # Docker Server Setup
 
+### Docker server setup
+A small script for providing multiple user accounts on a host machine using a CUDA Docker image.
+
 ### Setting up docker environment
 1. Install [Docker](https://docs.docker.com/engine/install/)
 2. Install nvidia drivers and [nvidia-container-toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
 3. Reboot the server to initialize GPU drivers
-4. Pull or build the docker image from the Dockerfile:  
-   `docker build -t [TagName] -f [MyDockerFile] .`  
-   Or you can run the script `start_single_server_lim_disk.sh`
+4. Pull or build the docker image from the Dockerfile: `docker build -t [TagName] -f [MyDockerFile] .`
+   - For example, one can use ```nvidia/cuda:<cuda_version>-devel-ubuntu<os_version>``` to run applications using pytorch+cuda.
+   - Run the script to start a container: `start_single_server_lim_disk.sh`.
+   - When using NVIDIA’s CUDA image, you need to use the same CUDA version as the host.
 * Ensure the disk is formatted as 'xfs' to enforce quota limits. For more details, refer to the [Docker documentation](https://docs.docker.com/reference/cli/dockerd/#overlay2-options).
-* *Important update!* In Docker Engine 29.0+, Docker’s default image backend does not use overlay2 anymore which is required for quota limits with xfs. [Apply overlay2 setting to xfs disk](https://docs.docker.com/engine/storage/drivers/overlayfs-driver/).
+* *Important update!* From Docker Engine 29.0+, Docker’s default image backend DOES NOT use ``overlay2`` anymore which is required to limit container disk quota by with xfs file system. Please refer the official document to [apply overlay2 setting to xfs disk](https://docs.docker.com/engine/storage/drivers/overlayfs-driver/).
 
 ### How to access and attach the container
 * To access the container using ssh:  
@@ -18,8 +22,8 @@
 Press ```Ctrl+P``` ```Ctrl+Q``` to detatch the container. ```Ctrl+D```, will shutdown the container.
 
 ### TODO
-* Limit the disk R/W rate per container
-* Show available disk / ram during making a container
+* todo...
+
 ### Special Thanks to...
 [Jaehyun-Ko](https://github.com/jaehyun-ko)  
 [mirageoasis](https://github.com/mirageoasis)  
