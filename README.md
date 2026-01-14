@@ -21,6 +21,10 @@ A small script for providing multiple user accounts on a host machine using a CU
 `docker attach [container_name]`  
 Press ```Ctrl+P``` ```Ctrl+Q``` to detatch the container. ```Ctrl+D```, will shutdown the container.
 
+
+### Note
+* If you're using ubuntu and face some cuda driver version mismatch issues after several days, try out uninstalling ```unattended-upgrades``` package.
+
 ### TODO
 * todo...
 
