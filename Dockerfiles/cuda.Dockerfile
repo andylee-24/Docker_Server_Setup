@@ -14,7 +14,7 @@ RUN \
             apt update && \
             apt -y upgrade && \
             apt install -y build-essential locales && \
-            apt install -y vim zsh unzip htop wget xrdp tmux git curl xrdp && \
+            apt install -y sudo vim zsh unzip htop nvtop btop wget xrdp tmux git curl xrdp && \
             apt install -y fail2ban && \
             apt install -y openssh-server && \
             env > /etc/environment
