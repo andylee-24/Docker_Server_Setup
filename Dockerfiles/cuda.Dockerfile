@@ -1,6 +1,6 @@
 # Comments are from https://medium.com/bb-tutorials-and-thoughts/docker-a-beginners-guide-to-dockerfile-with-a-sample-project-6c1ac1f17490
 
-# Pull base image.
+# Pull base image - find the proper cuda version for your device (check nvidia-smi)
 FROM nvidia/cuda:12.6.3-cudnn-devel-ubuntu24.04
 
 # RUN executes the instructions in a new layer on top of the existing image
