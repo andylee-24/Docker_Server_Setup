@@ -31,7 +31,7 @@ WORKDIR /root
 # https://devtron.ai/blog/cmd-and-entrypoint-differences/
 # ENTRYPOINT sets default parameters that cannot be overriden while starting up docker containers with CLI params
 # (appended as a CLI params)
-ENTRYPOINT ["sh", "-c", "service ssh start && exec zsh"]
+ENTRYPOINT ["sh", "-c", "service ssh start && service fail2ban start && exec zsh"]
 
 
 # CMD command is used to give the default commands when the image is instantiated (only once).
